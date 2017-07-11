@@ -1,12 +1,12 @@
 library(ribiosIO)
 set.seed(10)
-X <- sort(runif(25)*10+2)
+X <- sort(runif(25)*3+2)
 Y <- 2.85*X+1.24+rnorm(25)
 Y[3] <- Y[3]-6
 Y[2] <- Y[2]-4
 Y[1] <- Y[2]-2
-Y[24] <- Y[24]+9
-Y[25] <- Y[24]+10
+Y[24] <- Y[24]+3
+Y[25] <- Y[24]+3
 y <- round(2^Y)
 x <- log10(X)*10
 

@@ -9,5 +9,5 @@ Today's tasks:
 2. Transform the caspase activation signal with log2 transformation, and re-do the scatter plot.
 3. Fit a linear model between the response and the variable. What's your conclusion?
 4. Suppose following concentrations are tested: 5.55, 6.24, 7.11, 9.03 (mM), what are the expected caspase activation signal?
-5. Try to find outliers in the model and remove them from the linear model fitting. How does the fitting change?
+5. Try to find outliers in the model, mark them in the visualisation, and remove them from the linear model fitting. How does the fitting change?
 6. Try to use __MASS::rlm__ to fit the data without removing the outliers, and compare the results.

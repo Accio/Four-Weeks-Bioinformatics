@@ -8,7 +8,7 @@ Y[1] <- Y[2]-2
 Y[24] <- Y[24]+3
 Y[25] <- Y[24]+2
 y <- round(2^Y)
-x <- log10(X)*10
+x <- round(log10(X)*10,2)
 
 plot(x, y, log="y")
 

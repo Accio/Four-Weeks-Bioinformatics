@@ -14,4 +14,4 @@ plot(x, y, log="y")
 
 res <- data.frame(ToxConc=x, CaspaseSignal=y)
 res <- res[sample(1:nrow(res)),]
-writeMatrix(res, "values.txt")
+writeMatrix(res, "values.txt", row.names=FALSE)

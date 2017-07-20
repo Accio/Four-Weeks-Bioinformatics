@@ -151,3 +151,15 @@ JOIN club c
 ON c.name='music'
 JOIN student s
 ON sc.student_id = s.id;
+
+-- misc
+.help
+.mode csv
+.import student-file.tsv student
+
+-- write output to a file
+.output output.txt
+SELECT * FROM student
+
+-- write output to stdout
+.output

@@ -31,7 +31,7 @@ UPDATE student SET given_name = 'Jitao David' WHERE family_name = 'Zhang';
 DELETE FROM student WHERE family_name="Strahm";
 
 -- alter table
-ATLER TABLE student ADD COLUMN gender char;
+ALTER TABLE student ADD COLUMN gender char;
 UPDATE student SET gender='m' WHERE given_name IN ('Roland', 'Jitao David', 'Martin');
 UPDATE student SET gender='w' WHERE given_name IN ('Laura', 'Verena');
 

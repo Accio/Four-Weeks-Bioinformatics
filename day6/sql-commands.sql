@@ -152,6 +152,12 @@ ON c.name='music'
 JOIN student s
 ON sc.student_id = s.id;
 
+-- primary/foreign key allows easy writing JOINs
+SELECT *
+FROM student s
+JOIN note n;
+-- ON s.id=n.student_id
+
 -- misc
 .help
 .mode csv

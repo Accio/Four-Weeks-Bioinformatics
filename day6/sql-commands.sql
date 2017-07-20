@@ -142,3 +142,12 @@ JOIN (SELECT s.id, s.family_name, s.given_name, n.endterm
 ON scc.student_id = ss.id;
 
 SELECT * FROM v;
+
+-- an alternative query
+SELECT DISTINCT s.family_name FAMILYNAME, s.given_name GIVENAME, n.endterm FROM studentInClub sc
+JOIN note n
+ON sc.student_id = n.student_id
+JOIN club c
+ON c.name='music'
+JOIN student s
+ON sc.student_id = s.id;

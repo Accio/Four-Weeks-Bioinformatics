@@ -67,12 +67,27 @@ SELECT * FROM note;
 -- delete the student number 6 will FAIL, because the foreign key constraint posed on note
 DELETE FROM student WHERE id=6;
 
--- JOIN
+-- now it works: first delete in note and then modify student
+DELETE FROM note WHERE student_id=6;
+DELETE FROM student WHERE id=6;
+
+-- JOIN (by default: inner join): only shows rows that exist in both tables
 SELECT family_name, given_name, midterm, endterm
   FROM student s
   JOIN note n
   ON s.id=n.student_id;
 
+-- LEFT JOIN: print all rows even some are not present in one table
+SELECT family_name, given_name, midterm, endterm
+  FROM student s
+  LEFT JOIN note n
+  ON s.id=n.student_id;
+
+SELECT family_name, given_name, midterm, endterm
+  FROM student s
+  LEFT JOIN note n
+  ON n.student_id=s.id;
+  
 -- students in club
 DROP TABLE IF EXISTS club;
 CREATE TABLE club (id int PRIMARY KEY, name char);
@@ -97,13 +112,33 @@ INSERT INTO studentInClub('student_id', 'club_id') VALUES (3,5);
 INSERT INTO studentInClub('student_id', 'club_id') VALUES (4,1);
 INSERT INTO studentInClub('student_id', 'club_id') VALUES (4,3);
 INSERT INTO studentInClub('student_id', 'club_id') VALUES (4,5);
-INSERT INTO studentInClub('student_id', 'club_id') VALUES (6,5);
+-- INSERT INTO studentInClub('student_id', 'club_id') VALUES (6,5);
 
 -- question: what are the endterm scores of students that are are in the music club?
-SELECT DISTINCT s.family_name FAMILYNAME, s.given_name GIVENAME, n.endterm FROM studentInClub sc
-JOIN note n
-ON sc.student_id = n.student_id
-JOIN club c
-ON c.name='music'
-JOIN student s
-ON sc.student_id = s.id;
+SELECT ss.family_name FAMILYNAME, ss.given_name GIVENAME, ss.endterm
+FROM (SELECT student_id 
+      FROM studentInClub sc
+      JOIN club c
+      ON sc.club_id= c.id
+      WHERE c.name='music') scc
+JOIN (SELECT s.id, s.family_name, s.given_name, n.endterm
+      FROM student s
+      JOIN note n
+      ON s.id=n.student_id) ss
+ON scc.student_id = ss.id;
+
+-- VIEW
+CREATE VIEW v AS
+SELECT ss.family_name FAMILYNAME, ss.given_name GIVENAME, ss.endterm
+FROM (SELECT student_id 
+      FROM studentInClub sc
+      JOIN club c
+      ON sc.club_id= c.id
+      WHERE c.name='music') scc
+JOIN (SELECT s.id, s.family_name, s.given_name, n.endterm
+      FROM student s
+      JOIN note n
+      ON s.id=n.student_id) ss
+ON scc.student_id = ss.id;
+
+SELECT * FROM v;

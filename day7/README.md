@@ -1,4 +1,4 @@
-Github and Git
+Git and Github
 ===
 
 1. Get an account on [Github](http://github.com) if you have not got one

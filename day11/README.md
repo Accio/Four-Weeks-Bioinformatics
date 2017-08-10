@@ -12,3 +12,6 @@ Next, try to analyse the differential gene expression using the data provided in
 * rnaseq-example-ContrastMatrix:txt: Contrast matrix required by _edgeR_, specifying the comparisons that we want to make
 * rnaseq-example-sampleGroups.txt: A plain-text file with one line for each sample, used to classify samples into groups
 * rnaseq-example-sampleGroupLevels.txt: A plain-text file with one line for each sample group, used to rank the sample groups by a desired order, such as _control_, _low-dose treatment_, and _high-dose treatment_.
+
+
+For completeness, we have also included a microarray dataset (files with the pattern ma-.*). Feel free to explore the difference between the two types of data.
